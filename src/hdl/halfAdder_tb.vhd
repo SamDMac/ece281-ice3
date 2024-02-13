@@ -86,10 +86,10 @@ begin
 	test_process : process 
 	begin
 	
-		i_sw1 <= '0'; i_sw0 <= '0'; wait for 10 ns;
-		i_sw1 <= '0'; i_sw0 <= '1'; wait for 10 ns;
-		i_sw1 <= '1'; i_sw0 <= '0'; wait for 10 ns;
-		i_sw1 <= '1'; i_sw0 <= '1';	
+		w_sw <= o"0"; wait for 10 ns;
+                assert w_led = "00" report "bad 000" severity failure;
+        w_sw <= o"1"; wait for 10 ns;
+                assert w_led = "01" report "bad 001" severity failure;
 		wait; -- wait forever
 		
 	end process;	
